@@ -1,7 +1,6 @@
 package wioenena.Client.Structures.Commands;
 
 import net.dv8tion.jda.api.Permission;
-import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.User;
@@ -13,7 +12,7 @@ public abstract class Command extends ListenerAdapter {
 
     private final CommandHandler handler;
 
-    protected String name;
+    protected String name = null;
     protected String[] aliases = {};
     protected boolean ownerOnly = false;
     protected Permission[] permissions = {};
@@ -30,6 +29,9 @@ public abstract class Command extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
 
         boolean isCommand = false;
+
+        if (this.name == null)
+            return;
 
         Message msg = event.getMessage();
 

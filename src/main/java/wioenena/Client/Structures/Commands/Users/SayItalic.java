@@ -1,15 +1,16 @@
 package wioenena.Client.Structures.Commands.Users;
+
 import wioenena.Client.Structures.Commands.Command;
 import wioenena.Client.Structures.Commands.CommandHandler;
 import wioenena.Client.Structures.Commands.Context;
 import wioenena.Client.Structures.Utils.ArrayUtil;
 
-public class Say extends Command {
+public class SayItalic extends Command {
 
-    public Say(CommandHandler handler) {
+    public SayItalic(CommandHandler handler) {
         super(handler);
-        this.name = "say";
-        this.aliases = new String[] { "yazdır", "yaz-kızım", "yaz-kizim" };
+        this.name = "say-italic";
+        this.aliases = new String[] { "eğik-yaz", "italic" };
     }
 
     @Override
@@ -19,7 +20,7 @@ public class Say extends Command {
             return;
         }
 
-        ctx.channel.sendMessage(ArrayUtil.join(ctx.args)).queue();
+        ctx.channel.sendMessage("*" + ArrayUtil.join(ctx.args) + "*").queue();
         return;
     }
 

@@ -1,11 +1,14 @@
 package wioenena.Client;
 
+import javax.security.auth.login.LoginException;
+
+import net.dv8tion.jda.api.JDABuilder;
 import wioenena.Client.Structures.Config;
 import wioenena.Client.Structures.Commands.CommandHandler;
 import wioenena.Client.Structures.Commands.Users.Say;
-
-import javax.security.auth.login.LoginException;
-import net.dv8tion.jda.api.JDABuilder;
+import wioenena.Client.Structures.Commands.Users.SayBold;
+import wioenena.Client.Structures.Commands.Users.SayItalic;
+import wioenena.Client.Structures.Commands.Users.SayUnderline;
 
 public class Client {
     private final JDABuilder builder;
@@ -35,6 +38,9 @@ public class Client {
 
     public void buildCommands() {
         this.commandHandler.addCommand(new Say(this.commandHandler));
+        this.commandHandler.addCommand(new SayItalic(this.commandHandler));
+        this.commandHandler.addCommand(new SayUnderline(this.commandHandler));
+        this.commandHandler.addCommand(new SayBold(this.commandHandler));
     }
 
     public CommandHandler getCommandHandler() {
